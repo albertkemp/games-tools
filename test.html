@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Falcon Docs</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Lobster|Roboto|Source+Code+Pro|Lato|Cormorant+Garamond">
+<link rel="shorcut icon" href="images/docslogo.png">
+    <style>
+        textarea {
+  width: 100%;
+  height: auto;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  top: 190px;
+  resize: none;
+}
+
+        textarea:focus {
+            outline: none;
+        }
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      h1 {
+        font-family: 'Open Sans', sans-serif;
+      }
+      #controls {
+        background-color: rgb(209, 209, 209);
+        padding: 20px;
+        color: black;
+        width: 100%;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+    select:hover {
+        cursor: pointer;
+    }
+    option:hover {
+        cursor: pointer;
+    }
+    </style>
+    <title>Change Text Color Example</title>
+  </head>
+  <body>
+    <header>
+        <h1>Falcon Docs - Ultimate document editing app.</h1>
+        <div id="controls">
+            <button onclick="openSaveDialog()">Save my document</button>
+            &nbsp;&nbsp;&nbsp;
+            <input type="color" id="color-input">
+            &nbsp;&nbsp;&nbsp;
+        <button onclick="window.print()"><i class="material-icons print-icon" title="Print this page">print</i></button>
+            &nbsp;&nbsp;&nbsp;
+            <button onclick="decreaseFontSize()" style="font-size: 24px;">-</button>
+            <label id="fontdisplay">16</label>
+        <button onclick="increaseFontSize()" style="font-size: 24px;">+</button>
+        &nbsp;&nbsp;&nbsp;
+        <button id="boldButton" style="font-size: 24px;"><b>B</b></button>
+        &nbsp;&nbsp;&nbsp;
+        <button id="underline-toggle" style="font-size: 24px; text-decoration: underline;">U</button>
+        &nbsp;&nbsp;&nbsp;
+        <button id="italic-toggle" style="font-size: 24px; font-style: italic;">I</button>
+  <select id="font-selector">
+    <option value="Arial">Default (Arial)</option>
+    <option value="Helvetica">Helvetica</option>
+    <option value="Open Sans">Open Sans</option>
+    <option value="Lobster">Lobster</option>
+    <option value="Roboto">Roboto</option>
+    <option value="Source Code Pro">Source Code Pro</option>
+    <option value="Lato">Lato</option>
+    <option value="Cormorant Garamond">Cormorant Garamond</option>
+  </select>
+        </div>
+    </header>
+
+    <div id="save-dialog" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeSaveDialog()">&times;</span>
+        <h2>Save Page</h2>
+        <label for="filename">Filename:</label>
+        <input type="text" id="filename">
+        <br><br>
+        <label for="location">Location:</label>
+        <select id="location">
+          <option value="Desktop">Desktop</option>
+          <option value="Documents">Documents</option>
+          <option value="Downloads">Downloads</option>
+        </select>
+        <br><br>
+        <button onclick="savePage()">Save</button>
+        <button onclick="closeSaveDialog()">Cancel</button>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <textarea id="text" placeholder="Type your text here"></textarea>
+    <script>
+      const colorInput = document.getElementById("color-input");
+      const text = document.getElementById("text");
+
+      colorInput.addEventListener("input", () => {
+        text.style.color = colorInput.value;
+      });
+      function savePage() {
+        const html = document.documentElement.outerHTML;
+        const blob = new Blob([html], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "page.html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+      const saveDialog = document.getElementById("save-dialog");
+
+      function openSaveDialog() {
+        saveDialog.style.display = "block";
+      }
+
+      function closeSaveDialog() {
+        saveDialog.style.display = "none";
+      }
+      let fontdisplay = document.getElementById("fontdisplay");
+      const textElement = document.getElementById("text");
+      let fontSize = 16;
+
+      function increaseFontSize() {
+        fontSize += 2;
+        textElement.style.fontSize = `${fontSize}px`;
+        fontdisplay.innerHTML = fontSize;
+      }
+
+      function decreaseFontSize() {
+        fontSize -= 2;
+        textElement.style.fontSize = `${fontSize}px`;
+        fontdisplay.innerHTML = fontSize;
+      }
+      const boldButton = document.getElementById("boldButton");
+
+boldButton.addEventListener("click", function() {
+  if (text.style.fontWeight === "bold") {
+    text.style.fontWeight = "normal";
+  } else {
+    text.style.fontWeight = "bold";
+  }
+});
+const textarea = document.querySelector('textarea');
+
+textarea.addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+});
+const fontSelector = document.getElementById('font-selector');
+fontSelector.addEventListener('change', () => {
+      const font = fontSelector.value;
+      text.style.fontFamily = font;
+    });
+    const underlineToggle = document.getElementById('underline-toggle');
+
+    let isUnderline = false;
+
+    underlineToggle.addEventListener('click', () => {
+      if (isUnderline) {
+        text.style.textDecoration = 'none';
+        isUnderline = false;
+      } else {
+        text.style.textDecoration = 'underline';
+        isUnderline = true;
+      }
+    });
+    const italicToggle = document.getElementById('italic-toggle');
+
+    let isItalic = false;
+
+    italicToggle.addEventListener('click', () => {
+      if (isItalic) {
+        text.style.fontStyle = 'normal';
+        isItalic = false;
+      } else {
+        text.style.fontStyle = 'italic';
+        isItalic = true;
+      }
+    });
+    document.addEventListener('keydown', function(event) {
+  if (event.key === 'u' && event.metaKey) {
+    underlineToggle.addEventListener('click');
+  }
+});
+    </script>
+  </body>
+</html>

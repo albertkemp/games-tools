@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Falcon Sheets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <style>
+            li {
+                display: inline-block;
+                font-size: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: lightgrey;
+                height: 50px;
+                text-align: center;
+                letter-spacing: 50px;
+                position: fixed;
+                top: 2em;
+            }
+            #topnav {
+                font-size: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: lightgrey;
+                height: 50px;
+            }
+            #topnav:focus {
+                font-size: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: darkgrey;
+            }
+            #toolbar {
+                position: fixed;
+                top: 0em;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 20px;
+                background-color: white;
+                width: 100%;
+                height: 40px;
+                letter-spacing: 10px;
+            }
+            .divider {
+                -webkit-text-fill-color: darkgrey;
+            }
+            .lato {
+                font-family: 'Lato', sans-serif;
+                font-size: 30px;
+            }
+            .times{
+                font-family: 'Times', sans-serif;
+                font-size: 30px;
+             }
+             .timesnewroman {
+                 font-family: 'Times New Roman', sans-serif;
+                 font-size: 30px;
+             }
+             .helvetica {
+                 font-family: Arial, Helvetica, sans-serif;
+                 font-size: 30px;
+             }
+             .sansMS {
+                 font-family: 'Comic Sans MS', sans-serif;
+                 font-size: 30px;
+             }
+             .typewriter {
+                 font-family: 'American Typewriter', sans-serif;
+                 font-size: 30px;
+             }
+             .ebGaramond {
+                 font-family: 'EB Garamond', sans-serif;
+                 font-size: 30px;
+             }
+             .cormorantg {
+                 font-family: 'Cormorant Garamond', serif;
+                 font-size: 30px;
+             }
+             .playfairdisplay {
+                 font-family: 'Playfair Display', sans-serif;
+                 font-size: 30px;
+             }
+             .caveat {
+                 font-family: 'Caveat', serif;
+                 font-size: 30px;
+             }
+             .lobster {
+                 font-family: 'Lobster', serif;
+                 font-size: 30px;
+             }
+             .papyrus {
+                 font-family: 'Papyrus', serif;
+                 font-size: 30px;
+             }
+             .arial {
+                 font-size: 30px;
+             }
+             .default {
+                 font-size: 30px;
+             }
+             .helvetica {
+                 font-size: 30px;
+             }
+             .custom-select {
+                 display: inline-block;
+                 border: none;
+                 background-color: transparent;
+                 width: 100%;
+                 background-color: #fff;
+                 border-radius: 0px;
+             }
+             div.scrollmenu {
+  background-color: rgb(236, 236, 236);
+  overflow: auto;
+  white-space: nowrap;
+  
+  
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  -webkit-text-fill-color: black;
+  height: 15px;
+  width: 70px;
+  border: 1px solid black;
+  letter-spacing: -4px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+             
+        </style>
+        <div id="toolbar">
+            <span><i class="fa fa-undo"></i></span>
+            <span><i class="fa fa-redo"></i></span>
+            <span><i class="fa fa-print"></i></span>
+            <span><i class="fa fa-paint-roller"></i></span>
+            <span class="divider">|</span>
+            <span>100%</span>
+            <span class="divider">|</span>
+            <span>$</span>
+            <span>%</span>
+            <span>.0</span>
+            <span>.00</span>
+            <span>123</span>
+            <span class="divider">|</span>
+            <div class="custom-select" style="width:200px;">
+                <select>
+                  <option value="0" class="default">Default (Arial)</option>
+                  <option value="1" class="arial">Arial&nbsp;<i class="fa fa-check"></i></option>
+                  <option value="2" class="lato">Lato</option>
+                  <option value="3" class="times">Times</option>
+                  <option value="4" class="timesnewroman">Times New Roman</option>
+                  <option value="5" classs="helvetica">Helvetica Neue</option>
+                  <option value="6" class="sansMS">Comic Sans MS</option>
+                  <option value="7" class="typewriter">American Typewriter</option>
+                  <option value="8" class="ebGaramond">EB Garamond</option>
+                  <option value="9" class="cormorantg">Cormorant Garamond</option>
+                  <option value="10" class="papyrus">Papyrus</option>
+                  <option value="11" class="caveat">Caveat</option>
+                  <option value="12" class="lobster">Lobster</option>
+                </select>
+              </div>
+            <span class="divider">|</span>
+            <span>10</span>
+            <span class="divider">|</span>
+            <span><i class="fa fa-bold"></i></span>
+            <span><i class="fa fa-italic"></i></span>
+            <span><i class="fa fa-strikethrough"></i></span>
+            <span class="divider">|</span>
+            <span><i class="fa fa-fill-drip"></i></span>
+            <span><i class="fa fa-border-all"></i></span>
+            <span class="divider">|</span>
+            <span><i class="fa fa-align-left"></i></span>
+            <span class="divider">|</span>
+            <span><i class="fa fa-ellipsis-v"></i></span>
+        </div>
+        
+        <div class="scrollmenu">
+            <a href="#home">A</a>
+            <a href="#B">B</a>
+            <a href="#contact">C</a>
+            <a href="#about">D</a>
+            <a href="#support">E</a>
+            <a href="#blog">F</a>
+            <a href="#tools">G</a>  
+            <a href="#base">H</a>
+            <a href="#custom">I</a>
+            <a href="#more">J</a>
+            <a href="#logo">K</a>
+            <a href="#friends">L</a>
+            <a href="#partners">M</a>
+            <a href="#people">N</a>
+            <a href="#work">O</a>
+            <a>P</a>
+            <a>Q</a>
+            <a>R</a>
+            <a>S</a>
+            <a>T</a>
+            <a>U</a>
+            <a>V</a>
+            <a>W</a>
+            <a>X</a>
+            <a>Y</a>
+            <a>Z</a>
+          </div>
+1&nbsp;&nbsp;<input><input><input><input><input><input><br>2&nbsp;&nbsp;<input><input><input><input><input><input><br>3&nbsp;&nbsp;<input><input><input><input><input><input><br>4&nbsp;&nbsp;<input><input><input><input><input><input><br>5&nbsp;&nbsp;<input><input><input><input><input><input><br>6&nbsp;&nbsp;<input><input><input><input><input><input>
+<br>7&nbsp;&nbsp;<input><input><input><input><input><input><br>8&nbsp;&nbsp;<input><input><input><input><input><input><br>9&nbsp;&nbsp;<input><input><input><input><input><input><br>10<input><input><input><input><input><input><br>11<input><input><input><input><input><input><br>12<input><input><input><input><input><input>
+<br>13<input><input><input><input><input><input><br>14<input><input><input><input><input><input><br>15<input><input><input><input><input><input><br>16<input><input><input><input><input><input><br>17<input><input><input><input><input><input><br>18<input><input><input><input><input><input><br>19<input><input><input><input><input><input><br>20<input><input><input><input><input><input><br>21<input><input><input><input><input><input><br>22<input><input><input><input><input><input><br>23<input><input><input><input><input><input><br>24<input><input><input><input><input><input><br>25<input><input><input><input><input><input><br>26<input><input><input><input><input><input><br>27<input><input><input><input><input><input><br>28<input><input><input><input><input><input><br>29<input><input><input><input><input><input><br>30<input><input><input><input><input><input><br>31<input><input><input><input><input><input><br>32<input><input><input><input><input><input><br>33<input><input><input><input><input><input><br>34<input><input><input><input><input><input><br>35<input><input><input><input><input><input><br>36<input><input><input><input><input><input><br>37<input><input><input><input><input><input><br>38<input><input><input><input><input><input><br>39<input><input><input><input><input><input><br>40<input><input><input><input><input><input>
+<br>41<input><input><input><input><input><input><br>42<input><input><input><input><input><input><br>43<input><input><input><input><input><input><br>44<input><input><input><input><input><input><br>45<input><input><input><input><input><input><br>46<input><input><input><input><input><input><br>47<input><input><input><input><input><input><br>48<input><input><input><input><input><input><br>49<input><input><input><input><input><input><br>50<input><input><input><input><input><input><br>51<input><input><input><input><input><input><br>52<input><input><input><input><input><input><br>53<input><input><input><input><input><input><br>54<input><input><input><input><input><input><br>55<input><input><input><input><input><input><br>56<input><input><input><input><input><input><br>57<input><input><input><input><input><input><br>58<input><input><input><input><input><input><br>59<input><input><input><input><input><input><br>60<input><input><input><input><input><input>
+    </body>
+</html>
